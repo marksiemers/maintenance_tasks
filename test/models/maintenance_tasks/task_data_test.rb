@@ -161,7 +161,7 @@ module MaintenanceTasks
         [
           "post_ids", "content", "integer_attr", "big_integer_attr",
           "float_attr", "decimal_attr", "datetime_attr", "date_attr",
-          "time_attr", "boolean_attr",
+          "time_attr", "boolean_attr", "default_nil_attr",
         ],
         TaskData.new("Maintenance::ParamsTask").parameter_names
       )

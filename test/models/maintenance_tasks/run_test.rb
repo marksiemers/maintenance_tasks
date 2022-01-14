@@ -538,6 +538,16 @@ module MaintenanceTasks
       assert_equal "1,2,3", run.task.post_ids
     end
 
+    test "#validate_task_arguments instantiates task with empty arguments converted to nil" do
+      run = Run.new(
+        task_name: "Maintenance::ParamsTask",
+        arguments: { post_ids: "1,2,3", default_nil_attr: "" }
+      )
+      run.validate_task_arguments
+
+      assert_nil run.task.default_nil_attr
+    end
+
     test "#enqueued! rescues and retries ActiveRecord::StaleObjectError" do
       run = Run.create!(
         task_name: "Maintenance::UpdatePostsTask",

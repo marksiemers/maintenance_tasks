@@ -397,7 +397,8 @@ module MaintenanceTasks
       @task ||= begin
         task = Task.named(task_name).new
         if task.attribute_names.any? && arguments.present?
-          task.assign_attributes(arguments)
+          args = nil_if_empty(arguments)
+          task.assign_attributes(args)
         end
         task
       rescue ActiveModel::UnknownAttributeError
@@ -411,6 +412,10 @@ module MaintenanceTasks
       task.run_callbacks(callback)
     rescue
       nil
+    end
+
+    def nil_if_empty(arguments)
+      arguments.transform_values { |v| v.empty? ? nil : v }
     end
 
     def arguments_match_task_attributes

@@ -17,6 +17,7 @@ module Maintenance
     attribute :date_attr, :date
     attribute :time_attr, :time
     attribute :boolean_attr, :boolean
+    attribute :default_nil_attr, :integer, default: nil
 
     class << self
       attr_accessor :fast_task
