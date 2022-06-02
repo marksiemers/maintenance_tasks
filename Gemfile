@@ -2,6 +2,11 @@
 
 source "https://rubygems.org"
 
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+# Hopefully this is temporary, have PR open to the main repo: https://github.com/Shopify/job-iteration/pull/226
+gem 'job-iteration', github: 'marksiemers/job-iteration', ref: 'fix-unknown-attribute-reference-error'
+
 gemspec
 
 gem "better_html"
